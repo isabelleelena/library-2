@@ -5,20 +5,22 @@ const clearButton = document.querySelector(".clear-bookshelf");
 
 const myLibrary = [];
 
-function Book(title, author, length, id) {
+function Book(title, author, length, comment, id) {
   this.title = title;
   this.author = author;
   this.length = length;
+  this.comment = comment;
   this.id = id;
 }
 
-function addBookToLibrary(title, author, length) {
+function addBookToLibrary(title, author, length, comment) {
 
   let titleInput = title;
   let authorInput = author;
   let lengthInput = length;
+  let commentInput = comment;
 
-  let newBook = new Book(titleInput, authorInput, lengthInput, crypto.randomUUID())
+  let newBook = new Book(titleInput, authorInput, lengthInput, comment, crypto.randomUUID())
 
   myLibrary.push(newBook)
 }
@@ -37,19 +39,24 @@ function addBookCard(array) {
         authorContent.classList = "author";
         let lengthContent = document.createElement('p');
         lengthContent.classList = "length";
+        let commentContent = document.createElement('p')
+        commentContent.classList = "comment"
 
         bookCard.appendChild(titleContent);
         bookCard.appendChild(authorContent);
         bookCard.appendChild(lengthContent);
+        bookCard.appendChild(commentContent);
         shelf.appendChild(bookCard);
 
         let title = array[i].title;
         let author = array[i].author;
         let length = array[i].length;
+        let comment = array[i].comment;
 
         titleContent.textContent = `Title: ${title}`; 
         authorContent.textContent = `Author: ${author}`;
         lengthContent.textContent = `Length: ${length}`;
+        commentContent.textContent = `Thoughts: ${comment}`;
     }
 }
 
@@ -100,7 +107,7 @@ function generateForm() {
     // Length part of form
 
     let lengthSection = document.createElement('div');
-    lengthSection.classList = "title-section";
+    lengthSection.classList = "length-section";
     form.appendChild(lengthSection);
 
     let lengthLabel = document.createElement("label");
@@ -116,6 +123,26 @@ function generateForm() {
     lengthInput.placeholder = "265 Pages";
     lengthSection.appendChild(lengthInput)
 
+    // Comment part of form
+
+    let commentSection = document.createElement('div');
+    commentSection.classList = "comment-section";
+    form.appendChild(commentSection);
+
+    let commentLabel = document.createElement("label");
+    commentLabel.htmlFor = "user_thoughts";
+    commentLabel.classList = "comment-label";
+    commentLabel.textContent = "Thoughts:";
+    commentSection.appendChild(commentLabel);
+
+    let commentInput = document.createElement("textarea");
+    commentInput.id = "user_thoughts";
+    commentInput.name = "user_thoughts";
+    commentInput.placeholder = `I loved The Hunger Games because...`;
+    commentInput.rows = "5";
+    commentInput.cols = "50;"
+    commentSection.appendChild(commentInput)
+
     // Button section
 
     let submitButton = document.createElement("button");
@@ -129,11 +156,13 @@ function generateForm() {
         let titleInfo = titleInput.value;
         let authorInfo = authorInput.value;
         let lengthInfo = lengthInput.value;
-        addBookToLibrary(titleInfo, authorInfo, lengthInfo);
+        let commentInfo = commentInput.value
+        addBookToLibrary(titleInfo, authorInfo, lengthInfo, commentInfo);
         addBookCard(myLibrary);
         titleInput.value = "";
         authorInput.value = "";
         lengthInput.value = "";
+        commentInput.value = "";
 
     }
 
@@ -150,11 +179,11 @@ addButton.addEventListener('click', () => {
 
 
 
-addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages")
-addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages")
-addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages")
-addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages")
+//addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages")
+//addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages")
+//addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages")
+//addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages")
 
-addBookCard(myLibrary)
+//addBookCard(myLibrary)
 
 // console.log(myLibrary)
