@@ -33,19 +33,25 @@ function addBookCard(array) {
 
         let bookCard = document.createElement('div');
         bookCard.id = `${array[i].id}`;
+        bookCard.dataset.id = bookCard.id
+
         let titleContent = document.createElement('p');
         titleContent.classList = "title";
         let authorContent = document.createElement('p');
         authorContent.classList = "author";
         let lengthContent = document.createElement('p');
         lengthContent.classList = "length";
-        let commentContent = document.createElement('p')
-        commentContent.classList = "comment"
+        let commentContent = document.createElement('p');
+        commentContent.classList = "comment";
+        let deleteBook = document.createElement('button');
+        deleteBook.classList = "delete-button";
+        deleteBook.textContent = "Remove book";
 
         bookCard.appendChild(titleContent);
         bookCard.appendChild(authorContent);
         bookCard.appendChild(lengthContent);
         bookCard.appendChild(commentContent);
+        bookCard.appendChild(deleteBook);
         shelf.appendChild(bookCard);
 
         let title = array[i].title;
@@ -57,6 +63,10 @@ function addBookCard(array) {
         authorContent.textContent = `Author: ${author}`;
         lengthContent.textContent = `Length: ${length}`;
         commentContent.textContent = `Thoughts: ${comment}`;
+
+        deleteBook.addEventListener('click', () => {
+            document.querySelector(`[data-id="${bookCard.id}"]`).remove();
+        });
     }
 }
 
@@ -179,11 +189,11 @@ addButton.addEventListener('click', () => {
 
 
 
-//addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages")
-//addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages")
-//addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages")
-//addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages")
+// addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages")
+// addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages")
+// addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages")
+// addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages")
 
-//addBookCard(myLibrary)
+// addBookCard(myLibrary)
 
 // console.log(myLibrary)
