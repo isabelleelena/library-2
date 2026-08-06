@@ -34,6 +34,7 @@ function addBookCard(array) {
     for (i = 0; i < array.length; i++) {
 
         let bookCard = document.createElement('div');
+        bookCard.classList = "book-card";
         bookCard.id = `${array[i].id}`;
         bookCard.dataset.id = bookCard.id
 

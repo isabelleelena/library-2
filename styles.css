@@ -47,6 +47,16 @@ table {
 	border-spacing: 0;
 }
 
+/*
+Colours
+Purple: 360568
+Lighter Purple: 5b2a86
+Grey Blue: 7785ac
+Blue: 9ac6c5
+Green: a5e6ba
+Pale Green: f0fff1
+*/
+
 @font-face {
     font-family: 'Bellati';
     src: url("library-fonts/Bellati\ Nortils\ DEMO\ VERSION.woff2") format("woff2");
@@ -75,7 +85,7 @@ table {
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: minmax(300px, 1fr) 3fr;
+    grid-template-columns: minmax(370px, 1fr) 3fr;
     height: 100vh;
     width: 100vw;
 } 
@@ -83,29 +93,28 @@ table {
 .shelf {
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
-    grid-auto-rows: 160px;
+    grid-auto-rows: 250px;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
 [data-status="active"] {
-    font-family: "LinLibertine", sans-serif;
-    font-weight: 400;
-    font-size: 15px;
-    display: grid;
-    padding: 30px;
-    grid-template-rows: 230px 40px;
+    grid-template-rows: 250px 40px;
     gap: 10px;
 }
 
 form {
     display: grid;
-    grid-template-rows: 30px 30px 30px 70px 30px;
+    grid-template-rows: 30px 30px 30px 80px 40px;
     gap: 10px;
 }
 
 textarea {
     height: 60px;
+    font-family: "LinLibertine", sans-serif;
+    font-size: 15px;
+    padding: 10px;
 }
 
 .title-section,
@@ -126,29 +135,109 @@ textarea {
 }
 
 input[type="text"] {
-    height: 20px;
+    height: 30px;
+    font-family: "LinLibertine", sans-serif;
+    font-size: 15px;
+    padding-left: 10px;
 }
 
 button[type="submit"] {
-    height: 30px;
+    height: 40px;
 }
 
+[data-status="inactive"] {
+    grid-template-rows: 0px 40px;
+}
+
+.book-card {
+    width: 200px;
+    height: 200px;
+    padding: 25px;
+    display: grid;
+    grid-template-rows: 160px 40px;
+    line-height: 1.5;
+    background-color: #f0fff1;
+    border-radius: 8px;
+    border: 3px solid #a5e6ba;
+    box-shadow: 8px 8px #aa55ee66;
+}
+
+.title {
+    font-family: "Bellati", sans-serif;
+    font-size: 20px;
+}
+
+.book-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.author,
+.length,
+.comment {
+    font-family: "LinLibertine", sans-serif;
+}
+
+button {
+    font-family: "Bellati", sans-serif;
+    font-size: 15px;
+}
+
+.left-side {
+    background-color: #a5e6ba;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    padding: 30px;
+}
+
+.right-side {
+    background-color: #360568;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    padding: 30px;
+    overflow: scroll;
+}
+
+input[type="text"],
+textarea {
+    background-color: #f0fff1;
+    border: 0px;
+    border-radius: 8px;
+}
+
+[data-status="active"],
 [data-status="inactive"] {
     font-family: "LinLibertine", sans-serif;
     font-weight: 400;
     font-size: 15px;
     display: grid;
     padding: 30px;
-    grid-template-rows: 0px 40px;
+    background-color: #360568;
+    border-radius: 8px;
+    border: 3px solid #7785ac;
 }
 
-.book-card {
-    width: 200px;
-    height: 150px;
-    padding: 25px;
-    display: grid;
+.title-label,
+.author-label,
+.length-label,
+.comment-label {
+    color: #f0fff1;
+    font-weight: 700;
 }
 
-.title {
-    font-family: "Bellati", sans-serif;
+.interaction-panel button {
+    border: 3px solid #9ac6c5;
+    border-radius: 8px;
+    background-color: #7785ac;
+    color: #360568;
+}
+
+.book-card button {
+    border: 3px solid #5b2a86;
+    border-radius: 8px;
+    background-color: #aa55ee66;
+    color: #360568;
 }
