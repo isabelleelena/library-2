@@ -35,6 +35,11 @@ function addBookCard(array) {
         bookCard.id = `${array[i].id}`;
         bookCard.dataset.id = bookCard.id
 
+        let bookCardContent = document.createElement('div');
+        bookCardContent.classList = "book-information";
+        let bookCardButtons = document.createElement('div');
+        bookCardButtons.classList = "book-buttons";
+
         let titleContent = document.createElement('p');
         titleContent.classList = "title";
         let authorContent = document.createElement('p');
@@ -45,13 +50,21 @@ function addBookCard(array) {
         commentContent.classList = "comment";
         let deleteBook = document.createElement('button');
         deleteBook.classList = "delete-button";
-        deleteBook.textContent = "Remove book";
+        deleteBook.textContent = "Remove book"; 
+        let readButton = document.createElement('button');
+        readButton.classList = "read";
+        readButton.textContent = "Unread";
 
-        bookCard.appendChild(titleContent);
-        bookCard.appendChild(authorContent);
-        bookCard.appendChild(lengthContent);
-        bookCard.appendChild(commentContent);
-        bookCard.appendChild(deleteBook);
+        bookCardContent.appendChild(titleContent);
+        bookCardContent.appendChild(authorContent);
+        bookCardContent.appendChild(lengthContent);
+        bookCardContent.appendChild(commentContent);
+        bookCardButtons.appendChild(readButton);
+        bookCardButtons.appendChild(deleteBook);
+
+        bookCard.appendChild(bookCardContent);
+        bookCard.appendChild(bookCardButtons);
+
         shelf.appendChild(bookCard);
 
         let title = array[i].title;
@@ -67,6 +80,22 @@ function addBookCard(array) {
         deleteBook.addEventListener('click', () => {
             document.querySelector(`[data-id="${bookCard.id}"]`).remove();
         });
+
+        readButton.addEventListener('click', () => {
+            if (readButton.textContent === "Unread") {
+                readButton.textContent = "";
+                readButton.textContent = "Read";
+                readButton.style.backgroundColor = "purple";
+                readButton.style.color = "white";
+            }
+
+            else {
+                readButton.textContent = "";
+                readButton.textContent = "Unread";
+                readButton.style.backgroundColor = "white";
+                readButton.style.color = "purple";
+            }
+        })
     }
 }
 
@@ -148,9 +177,10 @@ function generateForm() {
     let commentInput = document.createElement("textarea");
     commentInput.id = "user_thoughts";
     commentInput.name = "user_thoughts";
-    commentInput.placeholder = `I loved The Hunger Games because...`;
+    commentInput.placeholder = `I loved The Hunger Games because... (max 100 char)`;
     commentInput.rows = "5";
-    commentInput.cols = "50;"
+    commentInput.cols = "50"
+    commentInput.maxLength = "100";
     commentSection.appendChild(commentInput)
 
     // Button section
@@ -189,11 +219,11 @@ addButton.addEventListener('click', () => {
 
 
 
-// addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages")
-// addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages")
-// addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages")
-// addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages")
+ addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages", "Hated it")
+ addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages", "What a romp!")
+ addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages", "Took me to another world")
+ addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages", "Got me to meditate")
 
-// addBookCard(myLibrary)
+ addBookCard(myLibrary)
 
 // console.log(myLibrary)
