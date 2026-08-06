@@ -47,11 +47,35 @@ table {
 	border-spacing: 0;
 }
 
+@font-face {
+    font-family: 'Bellati';
+    src: url("library-fonts/Bellati\ Nortils\ DEMO\ VERSION.woff2") format(".woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'LinLibertine';
+    src: url('library-fonts/LinLibertine_normal.woff2') format('.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'LinLibertine';
+    src: url("library-fonts/LinLibertine_bold.woff2") format('.woff2');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'LinLibertine';
+    src: url('library-fonts/LinLibertine_ital.woff2') format('.woff2');
+    font-style: italic;
+}
+
 .container {
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 3fr;
     height: 100vh;
     width: 100vw;
 } 
@@ -60,15 +84,51 @@ table {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);
     grid-auto-rows: 160px;
-    width: 50vw;
-    height: min(20vh);
     justify-content: center;
     align-items: center;
 }
 
 .interaction-panel {
-        display: grid;
+    font-family: "LinLibertine", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    display: grid;
     padding: 30px;
-    grid-template-rows: 200px 40px;
+    grid-template-rows: 230px 40px;
     gap: 10px;
+}
+
+form {
+    display: grid;
+    grid-template-rows: 30px 30px 30px 70px 30px;
+    gap: 10px;
+}
+
+textarea {
+    height: 60px;
+}
+
+.title-section,
+.author-section,
+.length-section,
+.comment-section {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 5px;
+    align-items: center;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: 40px;
+}
+
+input[type="text"] {
+    height: 20px;
+}
+
+button[type="submit"] {
+    height: 30px;
 }
