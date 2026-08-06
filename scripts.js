@@ -72,9 +72,9 @@ function addBookCard(array) {
         let length = array[i].length;
         let comment = array[i].comment;
 
-        titleContent.textContent = `Title: ${title}`; 
-        authorContent.textContent = `Author: ${author}`;
-        lengthContent.textContent = `Length: ${length}`;
+        titleContent.textContent = `${title}`; 
+        authorContent.textContent = `${author}`;
+        lengthContent.textContent = `${length} pages`;
         commentContent.textContent = `Thoughts: ${comment}`;
 
         deleteBook.addEventListener('click', () => {
@@ -159,7 +159,7 @@ function generateForm() {
     lengthInput.type = "text";
     lengthInput.id = "book_length";
     lengthInput.name = "book_length";
-    lengthInput.placeholder = "265 Pages";
+    lengthInput.placeholder = "265";
     lengthSection.appendChild(lengthInput)
 
     // Comment part of form
