@@ -2,6 +2,8 @@ const shelf = document.querySelector(".shelf");
 const formContainer = document.querySelector('.form-section');
 const addButton = document.querySelector(".add-book");
 const clearButton = document.querySelector(".clear-bookshelf");
+const interactionPanel = document.querySelector(".interaction-panel");
+interactionPanel.dataset.status = "inactive";
 
 const myLibrary = [];
 
@@ -104,6 +106,7 @@ function generateForm() {
     form.action = "example.com/path";
     form.method = "post" 
     formContainer.appendChild(form);
+    interactionPanel.dataset.status = "active"
 
     // Title part of form
 
