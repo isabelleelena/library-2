@@ -88,15 +88,17 @@ function addBookCard(array) {
             if (readButton.textContent === "Unread") {
                 readButton.textContent = "";
                 readButton.textContent = "Read";
-                readButton.style.backgroundColor = "purple";
-                readButton.style.color = "white";
+                readButton.style.backgroundColor = "#360568";
+                readButton.style.border = "3px solid #aa55ee66"
+                readButton.style.color = "#f0fff1";
             }
 
             else {
                 readButton.textContent = "";
                 readButton.textContent = "Unread";
-                readButton.style.backgroundColor = "white";
-                readButton.style.color = "purple";
+                readButton.style.backgroundColor = "#aa55ee66";
+                readButton.style.color = "#360568";
+                readButton.style.border = "3px solid #5b2a86"
             }
         })
     }
