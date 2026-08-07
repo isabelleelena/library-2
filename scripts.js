@@ -265,16 +265,4 @@ clearButton.addEventListener('click', () => {
     shelf.replaceChildren()
 })
 
-
-
-
-
-
- addBookToLibrary("I Who Have Never Known Men", "Jacqueline Harpman", "188 pages", "Hated it")
- addBookToLibrary("David Copperfield", "Charles Dickens", "1083 pages", "What a romp!")
- addBookToLibrary("Piranesi", "Susanna Clarke", "265 pages", "Took me to another world")
- addBookToLibrary("A Tale for the Time Being", "Ruth Ozeki", "543 pages", "Got me to meditate")
-
- addBookCard(myLibrary)
-
 // console.log(myLibrary)
