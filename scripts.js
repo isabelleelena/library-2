@@ -215,7 +215,9 @@ function generateForm() {
 }
 
 addButton.addEventListener('click', () => {
-    generateForm();
+    if (interactionPanel.dataset.status === "inactive") {
+        generateForm()
+    }
 });
 
 
