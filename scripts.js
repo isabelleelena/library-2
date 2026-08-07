@@ -207,7 +207,8 @@ function generateForm() {
             let errorDiv = document.createElement("div");
             errorDiv.classList = "error-div";
             interactionPanel.appendChild(errorDiv);
-            interactionPanel.style.gridTemplateRows = "250px 40px 40px"
+            interactionPanel.style.gridTemplateRows = "250px 40px 40px";
+            
 
             let errorMessage = document.createElement('p');
             errorMessage.textContent = "Please fill in all text fields before submitting!";
@@ -239,6 +240,10 @@ addButton.addEventListener('click', () => {
         generateForm()
     }
 });
+
+clearButton.addEventListener('click', () => {
+    shelf.replaceChildren();
+})
 
 
 
