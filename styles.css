@@ -97,6 +97,9 @@ Pale Green: f0fff1
     justify-content: center;
     align-items: center;
     gap: 20px;
+    height: 80vh;
+    padding: 30px;
+    overflow: scroll;
 }
 
 [data-status="active"] {
@@ -198,7 +201,6 @@ button {
     display: grid;
     align-items: center;
     padding: 30px;
-    overflow: scroll;
 }
 
 input[type="text"],
