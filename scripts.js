@@ -88,15 +88,17 @@ function addBookCard(array) {
             if (readButton.textContent === "Unread") {
                 readButton.textContent = "";
                 readButton.textContent = "Read";
-                readButton.style.backgroundColor = "purple";
-                readButton.style.color = "white";
+                readButton.style.backgroundColor = "#360568";
+                readButton.style.border = "3px solid #aa55ee66"
+                readButton.style.color = "#f0fff1";
             }
 
             else {
                 readButton.textContent = "";
                 readButton.textContent = "Unread";
-                readButton.style.backgroundColor = "white";
-                readButton.style.color = "purple";
+                readButton.style.backgroundColor = "#aa55ee66";
+                readButton.style.color = "#360568";
+                readButton.style.border = "3px solid #5b2a86"
             }
         })
     }
@@ -203,20 +205,37 @@ function generateForm() {
 
         event.preventDefault();
 
-        if (titleInput.value === "" || authorInput.value === "" || lengthInput.value === "" || commentInput.value === "") {
-            let errorDiv = document.createElement("div");
-            errorDiv.classList = "error-div";
-            interactionPanel.appendChild(errorDiv);
-            interactionPanel.style.gridTemplateRows = "250px 40px 40px";
-            
+         if (titleInput.value === "" || authorInput.value === "" || lengthInput.value === "" || commentInput.value === "") {
 
-            let errorMessage = document.createElement('p');
-            errorMessage.textContent = "Please fill in all text fields before submitting!";
-            errorMessage.classList = "error-message";
-            errorDiv.appendChild(errorMessage);
+            if (document.querySelector(".error-div") === null) {
+
+                let errorDiv = document.createElement("div");
+                errorDiv.classList = "error-div";
+                interactionPanel.appendChild(errorDiv);
+                interactionPanel.style.gridTemplateRows = "250px 40px 40px";
+                let errorMessage = document.createElement('p');
+                errorMessage.textContent = "Please fill in all text fields before submitting!";
+                errorMessage.classList = "error-message";
+                errorDiv.appendChild(errorMessage);
+
+            }
+
+            else {
+                let errorMessage = document.querySelector(".error-message");
+                errorMessage.textContent = "PRETTY Please fill in all text fields before submitting!!!";
+            }
+
         }
 
         else {
+
+            if (document.querySelector(".error-div") !== null) {
+                let errorDiv = document.querySelector(".error-div");
+                errorDiv.remove();
+
+                interactionPanel.style.gridTemplateRows = "250px 40px";
+            }
+
             let titleInfo = titleInput.value;
             let authorInfo = authorInput.value;
             let lengthInfo = lengthInput.value;
@@ -227,6 +246,7 @@ function generateForm() {
             authorInput.value = "";
             lengthInput.value = "";
             commentInput.value = "";
+
         }
 
     }
