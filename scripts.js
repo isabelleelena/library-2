@@ -242,7 +242,7 @@ addButton.addEventListener('click', () => {
 });
 
 clearButton.addEventListener('click', () => {
-    shelf.replaceChildren();
+    shelf.replaceChildren()
 })
 
 
