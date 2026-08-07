@@ -203,19 +203,12 @@ function generateForm() {
 
         event.preventDefault();
 
-        // We need to check both if the error message has fired and if the form is complete
-        // If the error message has fired and the form is complete, submit data
-        // if the error message has fire and the form is incomplete, delete previous error message and make a new one
-        // if the error message has not fired and the form is incomplete, fire error message
-        // if the error message has not fired and the form is complete, submit data 
-
-        if (titleInput.value === "" || authorInput.value === "" || lengthInput.value === "" || commentInput.value === "") {
-
-            let errorDiv = document.createElement("div");
-            errorDiv.classList = "error-div";
+         if (titleInput.value === "" || authorInput.value === "" || lengthInput.value === "" || commentInput.value === "") {
 
             if (document.querySelector(".error-div") === null) {
 
+                let errorDiv = document.createElement("div");
+                errorDiv.classList = "error-div";
                 interactionPanel.appendChild(errorDiv);
                 interactionPanel.style.gridTemplateRows = "250px 40px 40px";
                 let errorMessage = document.createElement('p');
@@ -233,6 +226,14 @@ function generateForm() {
         }
 
         else {
+
+            if (document.querySelector(".error-div") !== null) {
+                let errorDiv = document.querySelector(".error-div");
+                errorDiv.remove();
+
+                interactionPanel.style.gridTemplateRows = "250px 40px";
+            }
+
             let titleInfo = titleInput.value;
             let authorInfo = authorInput.value;
             let lengthInfo = lengthInput.value;
@@ -243,6 +244,7 @@ function generateForm() {
             authorInput.value = "";
             lengthInput.value = "";
             commentInput.value = "";
+
         }
 
     }
