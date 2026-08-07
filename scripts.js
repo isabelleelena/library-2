@@ -126,6 +126,7 @@ function generateForm() {
     titleInput.id = "book_title";
     titleInput.name = "book_title";
     titleInput.placeholder = "The Hunger Games";
+    titleInput.required = true;
     titleSection.appendChild(titleInput)
 
     // Author part of form
@@ -145,6 +146,7 @@ function generateForm() {
     authorInput.id = "author_name";
     authorInput.name = "author_name";
     authorInput.placeholder = "Suzanne Collins";
+    authorInput.required = true;
     authorSection.appendChild(authorInput)
 
     // Length part of form
@@ -164,6 +166,7 @@ function generateForm() {
     lengthInput.id = "book_length";
     lengthInput.name = "book_length";
     lengthInput.placeholder = "265";
+    lengthInput.required = true;
     lengthSection.appendChild(lengthInput)
 
     // Comment part of form
@@ -185,7 +188,8 @@ function generateForm() {
     commentInput.rows = "5";
     commentInput.cols = "50"
     commentInput.maxLength = "100";
-    commentSection.appendChild(commentInput)
+    commentInput.required = true;
+    commentSection.appendChild(commentInput);
 
     // Button section
 
@@ -196,17 +200,33 @@ function generateForm() {
     form.appendChild(submitButton);
 
     function submitButtonClick(event) {
+
         event.preventDefault();
-        let titleInfo = titleInput.value;
-        let authorInfo = authorInput.value;
-        let lengthInfo = lengthInput.value;
-        let commentInfo = commentInput.value
-        addBookToLibrary(titleInfo, authorInfo, lengthInfo, commentInfo);
-        addBookCard(myLibrary);
-        titleInput.value = "";
-        authorInput.value = "";
-        lengthInput.value = "";
-        commentInput.value = "";
+
+        if (titleInput.value === "" || authorInput.value === "" || lengthInput.value === "" || commentInput.value === "") {
+            let errorDiv = document.createElement("div");
+            errorDiv.classList = "error-div";
+            interactionPanel.appendChild(errorDiv);
+            interactionPanel.style.gridTemplateRows = "250px 40px 40px"
+
+            let errorMessage = document.createElement('p');
+            errorMessage.textContent = "Please fill in all text fields before submitting!";
+            errorMessage.classList = "error-message";
+            errorDiv.appendChild(errorMessage);
+        }
+
+        else {
+            let titleInfo = titleInput.value;
+            let authorInfo = authorInput.value;
+            let lengthInfo = lengthInput.value;
+            let commentInfo = commentInput.value
+            addBookToLibrary(titleInfo, authorInfo, lengthInfo, commentInfo);
+            addBookCard(myLibrary);
+            titleInput.value = "";
+            authorInput.value = "";
+            lengthInput.value = "";
+            commentInput.value = "";
+        }
 
     }
 

@@ -243,3 +243,12 @@ textarea {
     background-color: #aa55ee66;
     color: #360568;
 }
+
+.error-div {
+    color: #f0fff1;
+    display: grid;
+    align-items: center;
+    height: 40px;
+    font-weight: 700;
+    line-height: 1.5;
+}
