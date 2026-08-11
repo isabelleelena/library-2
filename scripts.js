@@ -7,22 +7,24 @@ interactionPanel.dataset.status = "inactive";
 
 const myLibrary = [];
 
-function Book(title, author, length, comment, id) {
+function Book(title, author, length, comment, id, read) {
   this.title = title;
   this.author = author;
   this.length = length;
   this.comment = comment;
   this.id = id;
+  this.read = false;
 }
 
-function addBookToLibrary(title, author, length, comment) {
+function addBookToLibrary(title, author, length, comment, read) {
 
   let titleInput = title;
   let authorInput = author;
   let lengthInput = length;
   let commentInput = comment;
+  let readInput = read;
 
-  let newBook = new Book(titleInput, authorInput, lengthInput, comment, crypto.randomUUID())
+  let newBook = new Book(titleInput, authorInput, lengthInput, comment, crypto.randomUUID(), readInput);
 
   myLibrary.push(newBook)
 }
@@ -31,7 +33,7 @@ function addBookCard(array) {
 
     shelf.replaceChildren()
     
-    for (i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
 
         let bookCard = document.createElement('div');
         bookCard.classList = "book-card";
@@ -85,20 +87,20 @@ function addBookCard(array) {
         });
 
         readButton.addEventListener('click', () => {
-            if (readButton.textContent === "Unread") {
-                readButton.textContent = "";
-                readButton.textContent = "Read";
-                readButton.style.backgroundColor = "#360568";
-                readButton.style.border = "3px solid #aa55ee66"
-                readButton.style.color = "#f0fff1";
-            }
-
-            else {
-                readButton.textContent = "";
+            if (array[i].read) {
+                array[i].read = false;
                 readButton.textContent = "Unread";
                 readButton.style.backgroundColor = "#aa55ee66";
                 readButton.style.color = "#360568";
                 readButton.style.border = "3px solid #5b2a86"
+            }
+
+            else {
+                array[i].read = true;
+                readButton.textContent = "Read";
+                readButton.style.backgroundColor = "#360568";
+                readButton.style.border = "3px solid #aa55ee66"
+                readButton.style.color = "#f0fff1";
             }
         })
     }

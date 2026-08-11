@@ -99,7 +99,7 @@ Pale Green: f0fff1
     gap: 20px;
     height: 80vh;
     padding: 30px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 [data-status="active"] {
